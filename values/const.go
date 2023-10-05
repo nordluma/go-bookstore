@@ -12,3 +12,8 @@ const (
 	BookStatusAvailable = 1
 	BookStatusBorrowed  = 2
 )
+
+// A key for context.Context to extract db runner
+var ContextKeyDbRunner = contextKeyDbRunner{}
+
+type contextKeyDbRunner struct{}
