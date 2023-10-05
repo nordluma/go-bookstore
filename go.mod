@@ -2,7 +2,10 @@ module github.com/nordluma/go-bookstore
 
 go 1.21.1
 
-require github.com/spf13/viper v1.16.0
+require (
+	github.com/lib/pq v1.10.9
+	github.com/spf13/viper v1.16.0
+)
 
 require (
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
