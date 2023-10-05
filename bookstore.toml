@@ -2,3 +2,9 @@
 server_address = ":8080"
 read_timeout = "60s"
 write_timeout = "60s"
+
+[database]
+connection_string = "host=localhost port=5432 user=postgres password=password dbname=bookstore_db sslmode=disable"
+max_idle_connections = 5
+max_open_connections = 20
+connection_max_lifetime = "60s"
