@@ -6,6 +6,9 @@ import (
 
 	"github.com/nordluma/go-bookstore/config"
 	"github.com/nordluma/go-bookstore/server"
+	"github.com/nordluma/go-bookstore/server/dbserver"
+
+	_ "github.com/lib/pq"
 )
 
 func main() {
@@ -15,6 +18,12 @@ func main() {
 	err := config.InitConfig("bookstore", nil)
 	if err != nil {
 		log.Fatalf("Failed to read config: %v\n", err)
+	}
+
+	log.Println("Initializing database")
+	err = dbserver.InitializeDb()
+	if err != nil {
+		log.Fatalf("Could not access database: %v\n", err)
 	}
 
 	var wg sync.WaitGroup

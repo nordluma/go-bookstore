@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/nordluma/go-bookstore/core"
+	"github.com/nordluma/go-bookstore/server/dbserver"
 	"github.com/nordluma/go-bookstore/util"
 	"github.com/nordluma/go-bookstore/values"
 )

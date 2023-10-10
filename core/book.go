@@ -7,6 +7,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/nordluma/go-bookstore/data"
 	"github.com/nordluma/go-bookstore/util"
 	"github.com/nordluma/go-bookstore/values"
 )
@@ -21,8 +22,8 @@ var (
 	// Returns a list of books
 	GetAllBooks = getAllBooks
 
-	Updatebook = updateBook
-	DeletBook  = deleteBook
+	UpdateBook = updateBook
+	DeleteBook = deleteBook
 
 	// Borrows a book if available or returns the book if it's borrowed
 	BorrowOrReturnBook = borrowOrReturnBook
@@ -52,7 +53,7 @@ func createBook(
 		return
 	}
 
-	requet.BookName = strings.TrimSpace(request.BookName)
+	request.BookName = strings.TrimSpace(request.BookName)
 	if request.BookName == "" {
 		cause := "Trying to create a book with empty name"
 		err = util.NewError(
@@ -184,14 +185,14 @@ func getAllBooks(
 
 	var books interface{}
 	if userRole == values.UserRoleMember {
-		books, err = data.GetAllBooksforMember(
+		books, err = data.GetAllBooksForMember(
 			ctx,
 			searchTerm,
 			rowOffset,
 			rowLimit,
 		)
 	} else {
-		books, err = data.GetAllBooksforLibrarian(ctx, searchTerm, rowOffset, rowLimit)
+		books, err = data.GetAllBooksForLibrarian(ctx, searchTerm, rowOffset, rowLimit)
 	}
 
 	if err != nil {
@@ -417,7 +418,7 @@ func borrowOrReturnBook(
 		return
 	}
 
-	status, err := date.GetBookStatus(ctx, request.BookId)
+	status, err := data.GetBookStatus(ctx, request.BookId)
 	if err != nil {
 		cause := "Failed to get book status"
 		err = util.NewError(

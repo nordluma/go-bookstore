@@ -6,6 +6,7 @@ import (
 	"io"
 	"strings"
 
+	"github.com/nordluma/go-bookstore/data"
 	"github.com/nordluma/go-bookstore/util"
 	"github.com/nordluma/go-bookstore/values"
 )
