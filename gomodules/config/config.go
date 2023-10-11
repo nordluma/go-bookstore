@@ -6,8 +6,19 @@ import (
 	"github.com/spf13/viper"
 )
 
-// Load configuration from file
-var InitConfig = initConfig
+var (
+	// Load configuration from file
+	InitConfig = initConfig
+
+	// Read string from TOML file
+	GetConfigString = getConfigString
+
+	// Read durataion from TOML file
+	GetConfigDuration = getConfigDuration
+
+	// Read integer from TOML file
+	GetConfigInt = getConfigInt
+)
 
 func initConfig(filename string, additionalDirs []string) error {
 	viper.SetConfigName(filename)
