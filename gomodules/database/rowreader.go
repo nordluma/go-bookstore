@@ -1,4 +1,4 @@
-package dbserver
+package database
 
 import (
 	"database/sql"
